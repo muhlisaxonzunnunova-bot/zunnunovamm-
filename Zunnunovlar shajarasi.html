@@ -1,0 +1,517 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Zunnunovlar shajarasi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Young+Serif&display=swap">
+<style>
+/* Layout: ikat band + hero, then one big living tree. Roots and trunk at the bottom hold the founding couple; every generation grows upward as branches into a leafy canopy. Detail card below. */
+:root{
+  --bg:#F2F5F3; --surface:#FFFFFF; --fg:#14243B; --muted:#586A7E; --line:#D3DCE2;
+  --g1:#B3283F; --g2:#D98E1F; --g3:#0E8F8A; --g4:#2B58B5; --g5:#7A4FB0;
+  --sky1:#CDB9E6; --sky2:#FBD9AA; --sun:#F2784B; --star:0; --mt1:#9C88B8; --mt2:#7C6A9C;
+  --leaf-a:#D9822B; --leaf-b:#E9B93A; --leaf-c:#B8432F; --leaf-d:#8E9B3A;
+  --bark:#5B3A29; --bark2:#3E2619; --soil:#4A3022; --grass:#9AA03C;
+  --display:"Young Serif",Georgia,"Times New Roman",serif;
+  --body:"Onest",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E1A2B; --surface:#16273D; --fg:#E8EEF4; --muted:#9AAABB; --line:#2A3C54;
+    --g1:#E5667A; --g2:#F0B04A; --g3:#37C2BC; --g4:#7BA3F0; --g5:#B896EA;
+    --sky1:#150F2B; --sky2:#5A2A3C; --sun:#FFB07A; --star:1; --mt1:#2E2347; --mt2:#1E1632;
+    --leaf-a:#C06A22; --leaf-b:#C79A2C; --leaf-c:#9C3A2B; --leaf-d:#76852F;
+    --bark:#A57C5C; --bark2:#6E4A35; --soil:#24160F; --grass:#6E7A2A;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E1A2B; --surface:#16273D; --fg:#E8EEF4; --muted:#9AAABB; --line:#2A3C54;
+  --g1:#E5667A; --g2:#F0B04A; --g3:#37C2BC; --g4:#7BA3F0; --g5:#B896EA;
+  --sky1:#150F2B; --sky2:#5A2A3C; --sun:#FFB07A; --star:1; --mt1:#2E2347; --mt2:#1E1632;
+  --leaf-a:#C06A22; --leaf-b:#C79A2C; --leaf-c:#9C3A2B; --leaf-d:#76852F;
+  --bark:#A57C5C; --bark2:#6E4A35; --soil:#24160F; --grass:#6E7A2A;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{
+  background:var(--bg); color:var(--fg); font:400 15px/1.55 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));
+  padding-right:max(16px,env(safe-area-inset-right,0px));
+}
+.wrap{max-width:1180px;margin:0 auto;padding-block:20px 56px}
+.band{display:block;width:100%;height:28px;border-radius:6px}
+.d1{fill:var(--g1)} .d2{fill:var(--g2)} .d3{fill:var(--g3)} .d4{fill:var(--g4)}
+.hero h1{font-family:var(--display);font-weight:400;font-size:clamp(2.4rem,8vw,4.6rem);line-height:1.02;margin:22px 0 10px;text-wrap:balance}
+.lead{max-width:60ch;color:var(--muted);margin:0}
+.stats{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:16px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.stats b{color:var(--fg);font-size:1.25em;font-weight:600;margin-right:4px}
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;margin:24px 0 12px}
+.toolbar input{flex:1 1 200px;max-width:300px;min-width:0;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);font:inherit}
+.toolbar input:focus-visible,.btn:focus-visible,.chip:focus-visible{outline:2px solid var(--g4);outline-offset:2px}
+.btn{padding:9px 14px;border:1px solid var(--fg);border-radius:10px;background:transparent;color:var(--fg);font:inherit;font-weight:500;cursor:pointer}
+.btn:hover{background:var(--fg);color:var(--bg)}
+.zoom{display:flex;align-items:center;gap:6px}
+.zoom .btn{min-width:40px;padding-inline:0}
+.zoom span{min-width:3.2em;text-align:center;font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:13px;color:var(--muted);width:100%}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--c);margin-right:6px}
+.treebox{overflow:auto;border:1px solid var(--line);border-radius:14px;background:var(--sky2);cursor:grab;overscroll-behavior:contain}
+.treebox.grab{cursor:grabbing;user-select:none}
+.sizer{position:relative}
+.canvas{position:absolute;left:0;top:0;transform-origin:0 0;background:linear-gradient(var(--sky1),var(--sky2) 78%)}
+.canvas svg{position:absolute;left:0;top:0;pointer-events:none}
+.stars{opacity:var(--star)}
+.stars circle{fill:#fff}
+.la{fill:var(--leaf-a)} .lb{fill:var(--leaf-b)} .lc{fill:var(--leaf-c)} .ld{fill:var(--leaf-d)}
+.bl1{fill:var(--g1)} .bl2{fill:var(--g2)} .bl3{fill:var(--g5)}
+.fall{animation:fall linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes fall{
+  0%{transform:translate(0,-60px) rotate(0deg)}
+  50%{transform:translate(70px,420px) rotate(180deg)}
+  100%{transform:translate(-20px,900px) rotate(360deg)}
+}
+.edge{fill:none;stroke:var(--bark);stroke-width:var(--w);stroke-linecap:round;opacity:.92;stroke-dasharray:1;animation:draw 1.1s ease-out both;transition:stroke .2s,stroke-width .2s}
+.edge.on{stroke:var(--c);stroke-width:calc(var(--w) + 4px);opacity:1}
+.bond{stroke:var(--fg);stroke-width:1.5;stroke-dasharray:3 4;fill:none;opacity:.55}
+.ring{stroke:var(--fg);stroke-width:2.2;fill:none;opacity:.8}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+.node{position:absolute;width:108px;height:108px;padding:0;border:0;background:none;color:var(--fg);font:inherit;text-align:center;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;transition:opacity .2s}
+.av{width:50px;height:50px;flex:none;border-radius:50%;border:3px solid var(--c);background:color-mix(in srgb,var(--c) 22%,var(--surface));display:grid;place-items:center;font-family:var(--display);font-size:17px;transition:transform .15s}
+.node:hover .av{transform:scale(1.1)}
+.node[aria-pressed="true"] .av{box-shadow:0 0 0 3px var(--surface),0 0 0 6px var(--c)}
+.node:focus-visible{outline:2px solid var(--fg);outline-offset:2px;border-radius:12px}
+.lbl{display:flex;flex-direction:column;align-items:center;max-width:108px;padding:1px 3px 2px;border-radius:8px;background:color-mix(in srgb,var(--surface) 90%,transparent)}
+.nm{font-weight:600;font-size:12px;line-height:1.2;text-wrap:balance;overflow-wrap:anywhere}
+.yr{font-size:11px;line-height:1.3;color:var(--muted);font-variant-numeric:tabular-nums}
+.node.dim{opacity:.22}
+.node.hit .nm{text-decoration:underline;text-decoration-color:var(--c);text-decoration-thickness:2px;text-underline-offset:3px}
+.detail{margin-top:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface);padding:20px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 22px}
+.big{width:88px;height:88px;border-radius:50%;border:4px solid var(--c);background:color-mix(in srgb,var(--c) 18%,var(--surface));display:grid;place-items:center;font-family:var(--display);font-size:32px}
+.detail h2{font-family:var(--display);font-weight:400;font-size:1.9rem;line-height:1.15;margin:0 0 2px;text-wrap:balance}
+.role{text-transform:uppercase;letter-spacing:.09em;font-size:12px;color:var(--muted)}
+.facts{display:flex;flex-wrap:wrap;gap:4px 18px;margin:10px 0 0;font-size:14px;font-variant-numeric:tabular-nums}
+.facts span{color:var(--muted)}
+.rels{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px 32px;border-top:1px solid var(--line);padding-top:14px}
+.rel-group{display:flex;flex-direction:column;gap:8px;min-width:0}
+.rel-group h3{margin:0;font-size:12px;font-weight:500;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border:1px solid var(--line);border-radius:999px;background:var(--bg);color:var(--fg);font:inherit;font-size:13.5px;cursor:pointer}
+.chip::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--c)}
+.chip:hover{border-color:var(--c)}
+.foot{margin-top:14px;font-size:13px;color:var(--muted);max-width:80ch}
+@media (max-width:560px){
+  .detail{grid-template-columns:minmax(0,1fr)}
+  .toolbar input{max-width:none}
+}
+@media (prefers-reduced-motion: reduce){
+  .edge{animation:none}
+  .fall{display:none}
+  .node,.av,.edge{transition:none}
+}
+</style>
+
+<div class="wrap">
+  <svg class="band" viewBox="0 0 560 28" preserveAspectRatio="xMidYMid slice" role="presentation" aria-hidden="true">
+    <defs>
+      <pattern id="ikat" width="28" height="28" patternUnits="userSpaceOnUse">
+        <polygon class="d1" points="14,1 27,14 14,27 1,14"/>
+        <polygon class="d2" points="14,6 22,14 14,22 6,14"/>
+        <polygon class="d3" points="14,10 18,14 14,18 10,14"/>
+        <rect class="d4" x="0" y="0" width="2" height="2"/>
+        <rect class="d4" x="26" y="26" width="2" height="2"/>
+      </pattern>
+    </defs>
+    <rect width="560" height="28" fill="url(#ikat)"/>
+  </svg>
+
+  <header class="hero">
+    <h1>Zunnunovlar shajarasi</h1>
+    <p class="lead">Zufnun Zunnunov va Karima Zunnunovadan boshlangan oila. Daraxtning ildizi pastda, har yangi avlod yuqoriga novda otadi. Biror kishini bossangiz, uning ildizigacha bo'lgan yo'l yorishadi.</p>
+    <div class="stats" id="stats"></div>
+  </header>
+
+  <div class="toolbar">
+    <input id="q" type="search" placeholder="Ism bo'yicha qidirish" aria-label="Ism bo'yicha qidirish" autocomplete="off">
+    <button class="btn" id="rand" type="button">Tasodifiy a'zo</button>
+    <div class="zoom">
+      <button class="btn" id="zout" type="button" aria-label="Kichraytirish">&minus;</button>
+      <span id="zval">55%</span>
+      <button class="btn" id="zin" type="button" aria-label="Kattalashtirish">+</button>
+      <button class="btn" id="zfit" type="button">Hammasi</button>
+    </div>
+    <div class="legend" id="legend" aria-label="Avlodlar rangi"></div>
+  </div>
+
+  <div class="treebox" id="box">
+    <div class="sizer" id="sizer"><div class="canvas" id="canvas"></div></div>
+  </div>
+
+  <section class="detail" id="detail" aria-live="polite"></section>
+  <p class="foot">Daraxtni sichqoncha bilan yoki barmoq bilan suring. Tugmalar bilan yaqinlashtirish va uzoqlashtirish mumkin. Yili ko'rsatilmagan kishilarning tug'ilgan yili hali kiritilmagan.</p>
+</div>
+
+<script>
+(function(){
+  var W=108,H=108,AV=50,G=22,GAP=12,ROW=160,PX=60,PT=90,PB=170;
+  var YEAR=new Date().getFullYear();
+  var used={};
+  function slug(n){
+    var s=n.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")||"a";
+    used[s]=(used[s]||0)+1; return used[s]>1?s+"-"+used[s]:s;
+  }
+  function P(name,born,died){return {id:slug(name),name:name,born:born||0,died:died||0}}
+  function U(a,b,kids){return {a:a,b:b||null,kids:kids||[]}}
+
+  var TREE=U(P("Zufnun Zunnunov",1909,1989),P("Karima Zunnunova",1916,1996),[
+    U(P("Sayyora Mansurova",1941),null,[
+      U(P("Sobirxon")),U(P("Dilorom")),U(P("Nargiza")),U(P("Sevara")),U(P("Saida")),
+      U(P("Saodat")),U(P("Movluda")),U(P("Husan")),U(P("Zahro")),U(P("Dilbar"))
+    ]),
+    U(P("Hosiyat",1948,2023),null,[
+      U(P("Sayfiddin",1968)),U(P("Shohida",1970)),U(P("Shohista",1974))
+    ]),
+    U(P("Shobarnoxon Zunnunov",1951),null,[
+      U(P("Toxira Ziyamatova",1974),null,[
+        U(P("Umida")),
+        U(P("Abdurauf"),P("Iroda"),[U(P("Soliha")),U(P("Muhammadamin")),U(P("Sadiya"))]),
+        U(P("Abdurashid")),U(P("Abduqodir"))
+      ]),
+      U(P("Noila Tolaganova",1976),null,[
+        U(P("Otabek"),P("Umida"),[U(P("Akrombek")),U(P("Hadicha")),U(P("Yasmina"))]),
+        U(P("Kamronbek"),P("Munojat"),[U(P("Muhammadali")),U(P("Oyshaxon"))])
+      ]),
+      U(P("Shoyaxyo Zunnunov",1978),null,[
+        U(P("Karimaxon",1999),null,[U(P("Zeboxon",2018)),U(P("Mirkomil",2022))]),
+        U(P("Komilaxon",2002),null,[U(P("Osiyoxon",2025))]),
+        U(P("Robiyaxon",2010))
+      ]),
+      U(P("Shorasul Zunnunov",1981),null,[
+        U(P("Muhlisaxon",2008)),U(P("Muhsinaxon",2012)),U(P("Mariyamxon",2017)),
+        U(P("Muhammad Fotix",2022)),U(P("Munisaxon",2024))
+      ])
+    ]),
+    U(P("Shomurod Zunnunov",1952),null,[
+      U(P("Shomansur Zunnunov",1979)),U(P("Nilufar",1980)),
+      U(P("Shomaqsud Zunnunov",1981)),U(P("Lobar Zunnunova",1984))
+    ])
+  ]);
+
+  var people=new Map(), allUnits=[], maxDepth=0;
+  function measure(u){
+    u.own=u.b?2*W+G:W;
+    var kw=0; u.kids.forEach(function(k){kw+=measure(k)});
+    if(u.kids.length) kw+=GAP*(u.kids.length-1);
+    u.kw=kw; u.w=Math.max(u.own,kw); return u.w;
+  }
+  function place(u,x,depth,parent){
+    u.depth=depth; u.parent=parent; allUnits.push(u);
+    if(depth>maxDepth) maxDepth=depth;
+    u.ax=x+(u.w-u.own)/2; u.bx=u.ax+W+G;
+    var cx=x+(u.w-u.kw)/2;
+    u.kids.forEach(function(k){place(k,cx,depth+1,u);cx+=k.w+GAP});
+  }
+  measure(TREE); place(TREE,PX,0,null);
+  var totalW=TREE.w+2*PX, totalH=PT+maxDepth*ROW+H+PB;
+  allUnits.forEach(function(u){
+    u.y=PT+(maxDepth-u.depth)*ROW;
+    people.set(u.a.id,{p:u.a,unit:u,slot:"a",x:u.ax,y:u.y,g:u.depth+1});
+    if(u.b) people.set(u.b.id,{p:u.b,unit:u,slot:"b",x:u.bx,y:u.y,g:u.depth+1});
+  });
+
+  function gcol(g){return "var(--g"+Math.min(g,5)+")"}
+  function roleOf(r){
+    var u=r.unit;
+    if(!u.parent) return r.slot==="a"?"Bobo":"Buvi";
+    if(r.slot==="b") return u.a.name+"ning turmush o'rtog'i";
+    return u.parent.a.name+"ning farzandi";
+  }
+
+  var canvas=document.getElementById("canvas"), box=document.getElementById("box"), sizer=document.getElementById("sizer");
+  canvas.style.width=totalW+"px"; canvas.style.height=totalH+"px";
+
+  var NS="http://www.w3.org/2000/svg";
+  function mk(w,h){var s=document.createElementNS(NS,"svg");s.setAttribute("width",w);s.setAttribute("height",h);s.setAttribute("aria-hidden","true");return s}
+  function el(tag,attrs){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e}
+  function rng(seed){return function(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+  function bez(t,a,b,c,d){var m=1-t;return m*m*m*a+3*m*m*t*b+3*m*t*t*c+t*t*t*d}
+  var f0=function(n){return n.toFixed(0)};
+
+  /* Shoxlar (qarindoshlik chiziqlari) */
+  var ew=[0,11,8,5.5,4], branches=[];
+  allUnits.forEach(function(u){
+    u.kids.forEach(function(k){
+      var sx=u.b?(u.ax+W+G/2):(u.ax+W/2), sy=u.b?(u.y+AV/2-9):(u.y+2);
+      var ex=k.ax+W/2, ey=k.y+AV+2;
+      branches.push({id:k.a.id,sx:sx,sy:sy,ex:ex,ey:ey,d:k.depth});
+    });
+  });
+
+  /* Orqa fon: osmon, barglar, tana, ildizlar, tuproq */
+  var bg=mk(totalW,totalH), R=rng(20261030), s="";
+  var rootU=TREE, mx=(rootU.ax+W/2+rootU.bx+W/2)/2, gy=totalH-118, ytop=rootU.y+34;
+  s+='<defs><path id="lf" d="M0 0C9 -8 9 -22 0 -30C-9 -22 -9 -8 0 0Z"/>'+
+     '<radialGradient id="halo"><stop offset="0" style="stop-color:var(--sun);stop-opacity:.55"/><stop offset="1" style="stop-color:var(--sun);stop-opacity:0"/></radialGradient>'+
+     '<radialGradient id="blA"><stop offset="0" style="stop-color:var(--leaf-a);stop-opacity:.34"/><stop offset="1" style="stop-color:var(--leaf-a);stop-opacity:0"/></radialGradient>'+
+     '<radialGradient id="blB"><stop offset="0" style="stop-color:var(--leaf-c);stop-opacity:.3"/><stop offset="1" style="stop-color:var(--leaf-c);stop-opacity:0"/></radialGradient></defs>';
+  var sunX=totalW*0.2;
+  s+='<circle cx="'+f0(sunX)+'" cy="'+f0(gy-250)+'" r="280" fill="url(#halo)"/><circle cx="'+f0(sunX)+'" cy="'+f0(gy-250)+'" r="60" style="fill:var(--sun)"/>';
+  s+='<g class="stars">';
+  for(var i=0;i<170;i++) s+='<circle cx="'+f0(R()*totalW)+'" cy="'+f0(R()*totalH*0.55)+'" r="'+(0.6+R()*1.1).toFixed(1)+'" opacity="'+(0.35+R()*0.6).toFixed(2)+'"/>';
+  s+='</g>';
+  function ridge(base,amp,step,fill,op){
+    var d="M0 "+f0(base),x=0;
+    while(x<totalW){var px=x+step*(0.4+R()*0.4);d+=" L"+f0(px)+" "+f0(base-amp*(0.35+R()*0.65));x+=step;d+=" L"+f0(x)+" "+f0(base-amp*(0.05+R()*0.25))}
+    return '<path d="'+d+' L'+totalW+' '+f0(gy+10)+' L0 '+f0(gy+10)+'Z" style="fill:'+fill+'" opacity="'+op+'"/>';
+  }
+  s+=ridge(gy-40,320,170,"var(--mt1)",.9)+ridge(gy-8,200,120,"var(--mt2)",.96);
+  for(var x=0;x<=totalW;x+=105){
+    var yy=40+130*(1-Math.sin(Math.PI*x/totalW))+R()*50;
+    s+='<circle cx="'+f0(x)+'" cy="'+f0(yy)+'" r="'+f0(95+R()*60)+'" fill="url(#'+(R()<.5?"blA":"blB")+')"/>';
+  }
+  people.forEach(function(r){
+    if(r.g<3) return;
+    s+='<circle cx="'+f0(r.x+W/2)+'" cy="'+f0(r.y+30)+'" r="'+f0(70+R()*50)+'" fill="url(#'+(R()<.5?"blA":"blB")+')"/>';
+  });
+  /* tuproq va o't */
+  var d="M0 "+(gy+6);
+  for(x=0;x<totalW;x+=140) d+=" Q"+(x+70)+" "+f0(gy-12+R()*10)+" "+(x+140)+" "+(gy+6);
+  var top=d;
+  s+='<path d="'+d+' L'+(Math.ceil(totalW/140)*140)+' '+totalH+' L0 '+totalH+'Z" style="fill:var(--soil)"/>';
+  s+='<path d="'+top+'" fill="none" style="stroke:var(--grass)" stroke-width="7" stroke-linecap="round"/>';
+  var gd="";
+  for(x=6;x<totalW;x+=13) gd+="M"+f0(x)+" "+f0(gy+3)+"q2 -"+f0(8+R()*6)+" "+f0(R()*10-5)+" -"+f0(12+R()*14);
+  s+='<path d="'+gd+'" fill="none" style="stroke:var(--grass)" stroke-width="2" stroke-linecap="round"/>';
+  for(i=0;i<Math.round(totalW/55);i++){
+    var fx=R()*totalW;
+    s+='<circle cx="'+f0(fx)+'" cy="'+f0(gy-14-R()*8)+'" r="'+(3+R()*1.8).toFixed(1)+'" class="bl'+(1+Math.floor(R()*3))+'"/>';
+  }
+  /* ildizlar */
+  for(i=0;i<8;i++){
+    var dir=i%2?1:-1, len=130+R()*330, wd=8+R()*8;
+    s+='<path d="M'+f0(mx+dir*26)+' '+(gy-4)+' C'+f0(mx+dir*(60+R()*40))+' '+(gy+8)+' '+f0(mx+dir*len*0.6)+' '+f0(gy+30+R()*14)+' '+f0(mx+dir*len)+' '+f0(gy+46+R()*26)+'" fill="none" style="stroke:var(--bark)" stroke-width="'+wd.toFixed(1)+'" stroke-linecap="round"/>';
+  }
+  /* tana */
+  s+='<path d="M'+f0(mx-82)+' '+(gy+6)+' C'+f0(mx-42)+' '+(gy-24)+' '+f0(mx-32)+' '+f0(gy-120)+' '+f0(mx-24)+' '+ytop+' L'+f0(mx+24)+' '+ytop+' C'+f0(mx+32)+' '+f0(gy-120)+' '+f0(mx+42)+' '+(gy-24)+' '+f0(mx+82)+' '+(gy+6)+'Z" style="fill:var(--bark)"/>';
+  for(i=0;i<5;i++){
+    var o=(i-2)*9;
+    s+='<path d="M'+f0(mx+o*1.8)+' '+(gy-2)+' C'+f0(mx+o)+' '+f0(gy-70)+' '+f0(mx+o*0.6)+' '+f0(gy-130)+' '+f0(mx+o*0.5)+' '+(ytop+10)+'" fill="none" style="stroke:var(--bark2)" stroke-width="2" stroke-linecap="round" opacity=".55"/>';
+  }
+  /* barglar: shoxlar bo'ylab va har bir kishi atrofida */
+  var cls=["la","lb","lc","ld"];
+  function leaf(x,y,sc){
+    if(R()<0.07) return '<circle cx="'+f0(x)+'" cy="'+f0(y)+'" r="'+(5+R()*2.5).toFixed(1)+'" class="bl1"/>';
+    return '<use href="#lf" class="'+cls[Math.floor(R()*4)]+'" style="opacity:'+(0.55+R()*0.4).toFixed(2)+'" transform="translate('+f0(x)+' '+f0(y)+') rotate('+f0(R()*360)+') scale('+sc.toFixed(2)+')"/>';
+  }
+  branches.forEach(function(b){
+    var my=(b.sy+b.ey)/2;
+    for(var t=0.08;t<=1;t+=0.08){
+      var px=bez(t,b.sx,b.sx,b.ex,b.ex), py=bez(t,b.sy,my,my,b.ey);
+      for(var j=0;j<2;j++) s+=leaf(px+(R()-.5)*54,py+(R()-.5)*54,0.8+R()*0.8);
+    }
+  });
+  people.forEach(function(r){
+    for(var j=0;j<4;j++) s+=leaf(r.x+W/2+(R()-.5)*150,r.y+(R()-.2)*40,0.9+R()*0.8);
+  });
+  /* tushayotgan barglar */
+  var fl="";
+  for(i=0;i<Math.round(totalW/260);i++){
+    fl+='<g transform="translate('+f0(R()*totalW)+' 0)"><use href="#lf" class="fall '+cls[Math.floor(R()*4)]+'" style="opacity:.8;animation-duration:'+f0(16+R()*16)+'s;animation-delay:-'+f0(R()*28)+'s" transform="scale(1)"/></g>';
+  }
+  s+=fl;
+  s+='<rect x="0" y="'+(totalH-34)+'" width="'+totalW+'" height="4" style="fill:var(--bark2)"/><rect x="0" y="'+(totalH-30)+'" width="'+totalW+'" height="30" fill="url(#ikat)"/>';
+  bg.innerHTML=s;
+  canvas.appendChild(bg);
+
+  /* Shoxlar qatlami */
+  var svg=mk(totalW,totalH), edges=new Map();
+  allUnits.forEach(function(u){
+    if(u.b){
+      var y=u.y+AV/2, x1=u.ax+W/2+AV/2, x2=u.bx+W/2-AV/2, m=(x1+x2)/2;
+      svg.appendChild(el("line",{x1:x1,y1:y,x2:m-14,y2:y,"class":"bond"}));
+      svg.appendChild(el("line",{x1:m+14,y1:y,x2:x2,y2:y,"class":"bond"}));
+      svg.appendChild(el("circle",{cx:m-5,cy:y,r:9,"class":"ring"}));
+      svg.appendChild(el("circle",{cx:m+5,cy:y,r:9,"class":"ring"}));
+    }
+  });
+  branches.forEach(function(b){
+    var my=(b.sy+b.ey)/2;
+    var p=el("path",{d:"M"+b.sx+" "+b.sy+" C"+b.sx+" "+my+" "+b.ex+" "+my+" "+b.ex+" "+b.ey,pathLength:"1","class":"edge"});
+    p.style.setProperty("--w",ew[Math.min(b.d,4)]+"px");
+    p.style.setProperty("--c",gcol(b.d+1));
+    p.style.animationDelay=((maxDepth-b.d)*0.18)+"s";
+    svg.appendChild(p); edges.set(b.id,p);
+  });
+  canvas.appendChild(svg);
+
+  function initials(n){var w=n.trim().split(/\s+/);return (w[0][0]+(w[1]?w[1][0]:"")).toUpperCase()}
+  function years(p){
+    if(p.born&&p.died) return p.born+"–"+p.died;
+    if(p.died) return "–"+p.died;
+    return p.born?String(p.born):"";
+  }
+
+  var nodes=new Map();
+  people.forEach(function(r,id){
+    var b=document.createElement("button");
+    b.type="button"; b.className="node"; b.dataset.id=id;
+    b.style.left=r.x+"px"; b.style.top=r.y+"px"; b.style.setProperty("--c",gcol(r.g));
+    b.setAttribute("aria-pressed","false");
+    b.setAttribute("aria-label",r.p.name+", "+roleOf(r));
+    var av=document.createElement("span"); av.className="av"; av.textContent=initials(r.p.name);
+    var lbl=document.createElement("span"); lbl.className="lbl";
+    var nm=document.createElement("span"); nm.className="nm"; nm.textContent=r.p.name;
+    lbl.appendChild(nm);
+    var ys=years(r.p);
+    if(ys){var yr=document.createElement("span"); yr.className="yr"; yr.textContent=ys; lbl.appendChild(yr)}
+    b.append(av,lbl);
+    b.addEventListener("click",function(){select(id,{})});
+    canvas.appendChild(b); nodes.set(id,b);
+  });
+
+  /* Statistika va rang izohi */
+  var stats=document.getElementById("stats");
+  var couples=allUnits.filter(function(u){return u.b}).length;
+  [[maxDepth+1,"avlod"],[people.size,"a'zo"],[allUnits.length,"oila shoxi"]].forEach(function(st){
+    var d=document.createElement("div"),b=document.createElement("b");
+    b.textContent=st[0]; d.append(b,st[1]); stats.appendChild(d);
+  });
+  var legend=document.getElementById("legend");
+  for(var g=1;g<=maxDepth+1;g++){
+    var sp=document.createElement("span"),ic=document.createElement("i");
+    ic.style.setProperty("--c",gcol(g)); sp.append(ic,g+"-avlod"); legend.appendChild(sp);
+  }
+
+  /* Yaqinlashtirish */
+  var scale=1, MINS=0.12, MAXS=1.3, zval=document.getElementById("zval");
+  function sizeBox(){
+    box.style.height=Math.round(Math.max(340,Math.min(totalH*scale+2,window.innerHeight*0.84)))+"px";
+  }
+  function setScale(v){
+    v=Math.max(MINS,Math.min(MAXS,v));
+    var cx=(box.scrollLeft+box.clientWidth/2)/scale, cy=(box.scrollTop+box.clientHeight/2)/scale;
+    scale=v; canvas.style.transform="scale("+v+")";
+    sizer.style.width=Math.round(totalW*v)+"px"; sizer.style.height=Math.round(totalH*v)+"px";
+    sizeBox();
+    box.scrollLeft=cx*v-box.clientWidth/2; box.scrollTop=cy*v-box.clientHeight/2;
+    zval.textContent=Math.round(v*100)+"%";
+  }
+  document.getElementById("zin").addEventListener("click",function(){setScale(scale*1.25)});
+  document.getElementById("zout").addEventListener("click",function(){setScale(scale/1.25)});
+  document.getElementById("zfit").addEventListener("click",function(){setScale(box.clientWidth/totalW)});
+  box.addEventListener("wheel",function(e){
+    if(!e.ctrlKey) return; e.preventDefault(); setScale(scale*(e.deltaY<0?1.1:1/1.1));
+  },{passive:false});
+  window.addEventListener("resize",sizeBox);
+
+  /* Sichqoncha bilan surish */
+  var drag=null, moved=false, suppress=false;
+  box.addEventListener("pointerdown",function(e){
+    if(e.pointerType!=="mouse"||e.button!==0) return;
+    drag={x:e.clientX,y:e.clientY,l:box.scrollLeft,t:box.scrollTop}; moved=false;
+  });
+  window.addEventListener("pointermove",function(e){
+    if(!drag) return;
+    var dx=e.clientX-drag.x, dy=e.clientY-drag.y;
+    if(!moved&&Math.abs(dx)+Math.abs(dy)>5){moved=true;box.classList.add("grab")}
+    if(moved){box.scrollLeft=drag.l-dx;box.scrollTop=drag.t-dy}
+  });
+  window.addEventListener("pointerup",function(){
+    if(drag&&moved){suppress=true;setTimeout(function(){suppress=false},0)}
+    drag=null; box.classList.remove("grab");
+  });
+  box.addEventListener("click",function(e){if(suppress){e.stopPropagation();e.preventDefault()}},true);
+
+  /* Tanlangan a'zo */
+  var detail=document.getElementById("detail"), current=null;
+  var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function chip(id){
+    var r=people.get(id), c=document.createElement("button");
+    c.type="button"; c.className="chip"; c.style.setProperty("--c",gcol(r.g));
+    c.textContent=r.p.name;
+    c.addEventListener("click",function(){select(id,{})});
+    return c;
+  }
+  function group(title,ids){
+    if(!ids.length) return null;
+    var g=document.createElement("div"); g.className="rel-group";
+    var h=document.createElement("h3"); h.textContent=title;
+    var cs=document.createElement("div"); cs.className="chips";
+    ids.forEach(function(id){cs.appendChild(chip(id))});
+    g.append(h,cs); return g;
+  }
+  function renderDetail(id){
+    var r=people.get(id), p=r.p, u=r.unit;
+    detail.replaceChildren();
+    var big=document.createElement("div"); big.className="big"; big.style.setProperty("--c",gcol(r.g)); big.textContent=initials(p.name);
+    var info=document.createElement("div"); info.style.minWidth="0";
+    var role=document.createElement("div"); role.className="role"; role.textContent=roleOf(r);
+    var h=document.createElement("h2"); h.textContent=p.name;
+    var f=document.createElement("div"); f.className="facts";
+    function fact(label,val){var s=document.createElement("div");var l=document.createElement("span");l.textContent=label+" ";s.append(l,String(val));f.appendChild(s)}
+    if(p.born&&p.died){fact("Yillari:",p.born+"–"+p.died);fact("Umri:",(p.died-p.born)+" yil")}
+    else if(p.born){fact("Tug'ilgan yili:",p.born);fact("Yoshi:",(YEAR-p.born))}
+    fact("Avlod:",r.g+"-avlod");
+    info.append(role,h,f);
+    detail.append(big,info);
+    var rels=document.createElement("div"); rels.className="rels";
+    var parents=[];
+    if(r.slot==="a"&&u.parent){parents.push(u.parent.a.id); if(u.parent.b)parents.push(u.parent.b.id)}
+    var spouse=u.b?[(r.slot==="a"?u.b:u.a).id]:[];
+    var sibs=(r.slot==="a"&&u.parent)?u.parent.kids.filter(function(k){return k!==u}).map(function(k){return k.a.id}):[];
+    var kids=u.kids.map(function(k){return k.a.id});
+    [group("Ota-ona",parents),group("Turmush o'rtog'i",spouse),group("Aka-uka, opa-singillar",sibs),group("Farzandlar",kids)].forEach(function(g){if(g)rels.appendChild(g)});
+    if(rels.children.length) detail.appendChild(rels);
+  }
+
+  function select(id,opts){
+    if(!people.has(id)) return;
+    current=id;
+    nodes.forEach(function(n,k){n.setAttribute("aria-pressed",k===id?"true":"false")});
+    var on=new Set(), u=people.get(id).unit;
+    while(u&&u.parent){on.add(u.a.id);u=u.parent}
+    edges.forEach(function(e,k){e.classList.toggle("on",on.has(k))});
+    renderDetail(id);
+    if(!opts.silent){try{history.replaceState(null,"","#"+id)}catch(e){}}
+    reveal(id,opts.instant);
+  }
+  function reveal(id,instant){
+    var r=people.get(id);
+    box.scrollTo({
+      left:(r.x+W/2)*scale-box.clientWidth/2,
+      top:(r.y+H/2)*scale-box.clientHeight/2,
+      behavior:(reduced||instant)?"auto":"smooth"
+    });
+  }
+
+  /* Qidiruv va tasodifiy tanlov */
+  var q=document.getElementById("q");
+  q.addEventListener("input",function(){
+    var v=q.value.trim().toLowerCase();
+    nodes.forEach(function(n,id){
+      var hit=v&&people.get(id).p.name.toLowerCase().indexOf(v)>-1;
+      n.classList.toggle("hit",!!hit); n.classList.toggle("dim",!!v&&!hit);
+    });
+  });
+  q.addEventListener("keydown",function(e){
+    if(e.key!=="Enter") return;
+    var first=null; nodes.forEach(function(n,id){if(!first&&n.classList.contains("hit"))first=id});
+    if(first) select(first,{});
+  });
+  document.getElementById("rand").addEventListener("click",function(){
+    var ids=Array.from(people.keys()).filter(function(k){return k!==current});
+    select(ids[Math.floor(Math.random()*ids.length)],{});
+  });
+
+  function fromHash(){
+    var id=decodeURIComponent((location.hash||"").slice(1));
+    return people.has(id)?id:null;
+  }
+  window.addEventListener("hashchange",function(){var id=fromHash();if(id&&id!==current)select(id,{silent:true})});
+  setScale(window.innerWidth<600?0.4:0.55);
+  select(fromHash()||TREE.a.id,{silent:true,instant:true});
+})();
+</script>
+
+</body></html>
